@@ -1,0 +1,22 @@
+FROM node:26
+
+WORKDIR /app
+
+RUN npm install -g pnpm@11.24.0
+
+# Сначала копируем только описание зависимостей для кеширования
+COPY app/package.json ./
+COPY app/pnpm-lock.yaml ./
+COPY app/pnpm-workspace.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
+# Затем копируем исходный код
+COPY app/. .
+
+EXPOSE 8080
+ENV NODE_ENV=production
+
+RUN make build
+
+CMD ["make", "start"]
