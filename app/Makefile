@@ -4,29 +4,29 @@ install:
 	npx pnpm@11.24.0 install --frozen-lockfile
 
 build:
-	pnpm run build
+	npx pnpm@11.24.0 run build
 
 prepare-env:
 	cp -n .env.example .env
 
 start:
-	NODE_ENV=production pnpm run start
+	NODE_ENV=production npx pnpm@11.24.0 run start
 
 dev:
-	pnpm exec concurrently "make start-frontend" "make start-backend"
+	npx pnpm@11.24.0 exec concurrently "make start-frontend" "make start-backend"
 
 start-backend:
-	pnpm run start --watch --verbose-watch --ignore-watch='node_modules .git dist database'
+	npx pnpm@11.24.0 run start --watch --verbose-watch --ignore-watch='node_modules .git dist database'
 
 start-frontend:
-	pnpm exec vite build --watch
+	npx pnpm@11.24.0 exec vite build --watch
 
 lint:
-	pnpm --silent run lint
-	pnpm --silent run format:check
+	npx pnpm@11.24.0 --silent run lint
+	npx pnpm@11.24.0 --silent run format:check
 
 lint-fix:
-	pnpm --silent run lint:fix
+	npx pnpm@11.24.0 --silent run lint:fix
 
 test:
-	NODE_ENV=test pnpm --silent test
+	NODE_ENV=test npx pnpm@11.24.0 --silent test
