@@ -8,4 +8,9 @@ temp/
 .env
 database/
 .cache/
-app/
+app/.local/*
+app/.npm/*
+app/.pnpm-store/*
+app/node_modules/*
+app/.cache/*
+app/dist/*
