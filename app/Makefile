@@ -1,7 +1,7 @@
 setup: install build
 
 install:
-	pnpm install
+	npx pnpm@11.24.0 install --frozen-lockfile
 
 build:
 	pnpm run build
