@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile.production
     command: make test
     environment:
+      CI: "true"
       DATABASE_HOST: ${DATABASE_HOST:-db}
       DATABASE_NAME: ${DATABASE_NAME:-postgres}
       DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
