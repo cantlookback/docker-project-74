@@ -2,5 +2,10 @@ FROM node:26
 
 WORKDIR /app
 
-# В node:26 нет pnpm, но Makefile использует его
 RUN npm install -g pnpm@11.24.0
+
+COPY app/package.json app/pnpm-lock.yaml app/pnpm-workspace.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
+COPY app/. .
